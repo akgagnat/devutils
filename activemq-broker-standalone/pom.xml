@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+	<groupId>net.gagnat.devutils</groupId>
+    <artifactId>activemq-broker-standalone</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+    <name>Gagnat :: DevUtils :: ActiveMQ standalone broker</name>
+	<description>Use from command line, e.g. mvn activemq:run -Dport=61698</description>
+	
+	<properties>
+        <port>61699</port>
+	</properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.activemq.tooling</groupId>
+            <artifactId>maven-activemq-plugin</artifactId>
+            <version>5.7.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.activemq.tooling</groupId>
+                <artifactId>maven-activemq-plugin</artifactId>
+                <version>5.7.0</version>
+                <configuration>
+                    <configUri>broker:(tcp://0.0.0.0:${port})?persistent=false</configUri>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
